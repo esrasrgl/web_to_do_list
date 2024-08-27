@@ -18,8 +18,6 @@ function ToDoItem({ task }) {
     }
   }
 
-  const is_done = (value) => console.log("value", value.target.checked);
-
   return (
     <li key={index}>
       {index !== editIndex ? (

@@ -1,12 +1,27 @@
 .toDoList {
   background-color: rgb(212, 190, 156);
   padding: 20px;
-  text-align: start;
   border-radius: 20px;
 }
 .text {
   width: 15rem;
   overflow-wrap: break-word;
+}
+.addDiv {
+  font-size: 1rem;
+  background-color: aliceblue;
+  margin-block: 10px;
+  padding-inline: 10px;
+  padding-block: 5px;
+  border-radius: 20px;
+  display: flex;
+}
+.listDiv {
+  background-color: rgb(210, 203, 192);
+  display: flex;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding-inline: 10px;
 }
 .strikethrough {
   text-decoration: line-through;
@@ -29,9 +44,4 @@
 .deleteBtn:hover {
   background-color: rgb(200, 60, 60);
 }
-.checkBtn {
-  background-color: rgb(33, 85, 199);
-}
-.checkBtn:hover {
-  background-color: rgb(91, 123, 192);
-}
+
