@@ -1,14 +1,13 @@
-import ToDoAdd from "./components/ToDoAdd";
 import Title from "./components/Title";
-import ToDOList from "./components/ToDoList";
-import todo from "./styles/todo.css";
+import React from "react";
+import { Link } from "react-router-dom";
+import Routers from "./components/router/Routers";
 
 function App() {
   return (
     <>
-      <Title>TODO LIST</Title>
-      <ToDoAdd />
-      <ToDOList/>
+    <Title>TODO LIST</Title>
+    <Routers/>
     </>
   );
 }
