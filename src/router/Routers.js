@@ -1,7 +1,7 @@
 import React from "react";
-import ToDOList from "../ToDoList";
+import ToDOList from "../components/ToDoList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Users from "../Users";
+import Users from "../components/Users";
 import { Link } from "react-router-dom";
 export default function Routers() {
   return (
