@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getToDoInfo } from "../redux/ToDoSlice";
 import { Link } from "react-router-dom";
+import "../styles/todo.css";
+
 const ToDOList = () => {
   const toDoItems = useSelector((state) => state.toDo.toDoItems);
-  const {userId} = useParams();
+  const { userId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,20 +18,23 @@ const ToDOList = () => {
 
   console.log(Array.isArray(toDoItems)); // true olmalı
   console.log("toDoItems: ", toDoItems);
-  console.log("toDoItems: id ",userId);
+  console.log("toDoItems: id ", userId);
 
   return (
     <div className="toDoList">
-      <div className="listDiv">
-        <ol>
+      <button onClick={() => dispatch(() => {})}>
+        ADD
+      </button>
+      <div>
+        <ul className="ul-todo">
           {(toDoItems && Array.isArray(toDoItems) ? toDoItems : []).map(
             (task, index) => (
               <ToDoItem key={task.id} task={task} />
             )
           )}
-        </ol>
+        </ul>
         <Link to="/users">Go to Users</Link>
-        </div>
+      </div>
     </div>
   );
 };
