@@ -1,0 +1,21 @@
+.card-container {
+  display: inline-block;
+  flex: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card-container:hover {
+    transform: scale(0.9);
+}
+.list-card {
+  font-size: 1rem;
+  background-color: var(--button-color);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  padding-inline: 10px;
+  padding-block: 5px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px black;
+}
