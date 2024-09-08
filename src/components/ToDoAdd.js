@@ -1,31 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { add_item } from "../redux/ToDoSlice";
+import Modal from "./Modal/Modal";
 
-function ToDoAdd() {
-  const [newTask, SetnewTask] = useState("");
-  const dispatch = useDispatch();
-
-  const handleInputValue = () => {
-    if (newTask.trim() === "") {
-      alert("Warning Invalid input !!!");
-    } else {
-      dispatch(add_item(newTask));
-      SetnewTask("");
-    }
-  };
+function ToDoAdd(userId) {
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   return (
-    <div className="addDiv">
-      <input
-        type="text"
-        placeholder="add task"
-        value={newTask}
-        onChange={(e) => SetnewTask(e.target.value)}
-      />
-      <button className="addBtn" onClick={handleInputValue}>
+    <div>
+      <button className="modalBtn" onClick={handleShowModal}>
         Add
       </button>
+      {showModal && (
+        <Modal
+        onClose={handleClose}
+        userId={userId}
+      />
+      )}
     </div>
   );
 }

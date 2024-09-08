@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { getToDoInfo } from "../redux/ToDoSlice";
 import { Link } from "react-router-dom";
 import "../styles/todo.css";
+import ToDoAdd from "./ToDoAdd";
 
 const ToDOList = () => {
   const toDoItems = useSelector((state) => state.toDo.toDoItems);
@@ -22,9 +23,7 @@ const ToDOList = () => {
 
   return (
     <div className="toDoList">
-      <button onClick={() => dispatch(() => {})}>
-        ADD
-      </button>
+      <ToDoAdd userId={userId}/>
       <div>
         <ul className="ul-todo">
           {(toDoItems && Array.isArray(toDoItems) ? toDoItems : []).map(
