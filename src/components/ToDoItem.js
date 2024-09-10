@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { editToDo } from "../redux/ToDoSlice";
 
 function ToDoItem({ task }) {
   const [editText, SeteditText] = useState(task.text);
@@ -8,11 +9,15 @@ function ToDoItem({ task }) {
   const index = task.id;
 
   function checkBtn(index) {
+    const newToDo = {
+      ...task,
+      title: editText,
+    };
     if (editText.trim() === "") {
       alert("Warning Invalid input");
       SeteditText(task.text);
     } else {
-      dispatch(()=>{});
+      dispatch(editToDo({ id: index, updatedToDo: newToDo }));
       SeteditIndex(null);
     }
   }
@@ -21,22 +26,14 @@ function ToDoItem({ task }) {
     <li key={index} className="list-todo">
       {index !== editIndex ? (
         <>
-          <input
-            type="checkBox"
-            onChange={(val) =>
-              dispatch(()=>{})
-            }
-          />
+          <input type="checkBox" onChange={(val) => dispatch(() => {})} />
           <span className={`text ${task.completed ? "strikethrough" : ""}`}>
             {task.title}
           </span>
           <button className="editBtn" onClick={() => SeteditIndex(index)}>
             Edit
           </button>
-          <button
-            className="deleteBtn"
-            onClick={() => dispatch(()=>{})}
-          >
+          <button className="deleteBtn" onClick={() => dispatch(() => {})}>
             Delete
           </button>
         </>

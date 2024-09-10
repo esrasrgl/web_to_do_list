@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { act } from "react";
 const initialState = {
   toDoItems: [],
 };
@@ -20,6 +21,17 @@ export const addToDo = createAsyncThunk("addToDo", async (newItem) => {
   return data;
 });
 
+export const editToDo = createAsyncThunk(
+  "editToDo",
+  async ({updatedToDo }) => {
+    const response = await axios.patch(
+      `https://jsonplaceholder.typicode.com/todos/${updatedToDo.id}`,
+      updatedToDo
+    );
+    const data = await response.data;
+    return data;
+  }
+);
 export const ToDoSlice = createSlice({
   name: "toDO",
   initialState: initialState,
@@ -43,6 +55,19 @@ export const ToDoSlice = createSlice({
         state.toDoItems.push(action.payload);
       })
       .addCase(addToDo.rejected, (state = initialState) => {
+        // error
+        state.toDoItems = {};
+      })
+      //edit
+      .addCase(editToDo.fulfilled, (state = initialState, action) => {
+        const index = state.toDoItems.findIndex(
+          (todo) => todo.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.toDoItems[index] = action.payload;
+        }
+      })
+      .addCase(editToDo.rejected, (state = initialState) => {
         // error
         state.toDoItems = {};
       });
