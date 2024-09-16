@@ -23,7 +23,7 @@ export const addToDo = createAsyncThunk("addToDo", async (newItem) => {
 
 export const editToDo = createAsyncThunk(
   "editToDo",
-  async ({updatedToDo }) => {
+  async ({ updatedToDo }) => {
     const response = await axios.patch(
       `https://jsonplaceholder.typicode.com/todos/${updatedToDo.id}`,
       updatedToDo
@@ -32,6 +32,11 @@ export const editToDo = createAsyncThunk(
     return data;
   }
 );
+
+export const deleteToDo = createAsyncThunk("deleteToDo", async (id) => {
+  await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  return id;
+});
 export const ToDoSlice = createSlice({
   name: "toDO",
   initialState: initialState,
@@ -69,6 +74,12 @@ export const ToDoSlice = createSlice({
       })
       .addCase(editToDo.rejected, (state = initialState) => {
         // error
+        state.toDoItems = {};
+      })
+      .addCase(deleteToDo.fulfilled, (state = initialState, action) => {
+        state.toDoItems = state.toDoItems.filter((todo) => todo.id !== action.payload);
+      })
+      .addCase(deleteToDo.rejected, (state = initialState, action) => {
         state.toDoItems = {};
       });
   },

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editToDo } from "../redux/ToDoSlice";
+import { deleteToDo, editToDo } from "../redux/ToDoSlice";
 
 function ToDoItem({ task }) {
-  const [editText, SeteditText] = useState(task.text);
+  const [editText, SeteditText] = useState(task.title);
   const [editIndex, SeteditIndex] = useState(null);
   const dispatch = useDispatch();
   const index = task.id;
@@ -33,7 +33,7 @@ function ToDoItem({ task }) {
           <button className="editBtn" onClick={() => SeteditIndex(index)}>
             Edit
           </button>
-          <button className="deleteBtn" onClick={() => dispatch(() => {})}>
+          <button className="deleteBtn" onClick={() => dispatch(deleteToDo(index))}>
             Delete
           </button>
         </>

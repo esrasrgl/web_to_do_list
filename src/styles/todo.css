@@ -1,12 +1,16 @@
 .toDoList {
-  background-color: rgb(212, 190, 156);
-  padding: 20px;
-  border-radius: 20px;
+  text-align: center;  
 }
 .text {
-  width: 15rem;
+  flex: 0.7;
+  text-align: start;
+  padding-left: 8px;
   overflow-wrap: break-word;
 }
+.strikethrough {
+  text-decoration: line-through;
+}
+/*  
 .addDiv {
   font-size: 1rem;
   background-color: aliceblue;
@@ -15,33 +19,22 @@
   padding-block: 5px;
   border-radius: 20px;
   display: flex;
-}
-.listDiv {
-  background-color: rgb(210, 203, 192);
+} */
+.list-todo {
+  padding-block: 20px;
+  padding-inline: 5px;
+  border-bottom: 1px solid black;
   display: flex;
-  margin-top: 20px;
-  border-radius: 20px;
-  padding-inline: 10px;
-}
-.strikethrough {
-  text-decoration: line-through;
-}
-.addBtn {
-  background-color: rgb(0, 133, 29);
-}
-.addBtn:hover {
-  background-color: rgb(74, 169, 0);
-}
-.editBtn {
-  background-color: rgb(216, 216, 79);
-}
-.editBtn:hover {
-  background-color: rgb(205, 205, 79);
-}
-.deleteBtn {
-  background-color: rgb(205, 14, 14);
-}
-.deleteBtn:hover {
-  background-color: rgb(200, 60, 60);
-}
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
+}
+.ul-todo{
+  height: 70vh;
+  width: 50vw;
+  border:1px solid black;
+  overflow: auto;
+  box-shadow: 0px 4px 8px black;
+
+}
